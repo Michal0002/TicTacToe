@@ -15,6 +15,7 @@ namespace Tic_Tac_Toe
 
         private Button[,] buttons;
         private char currentPlayer = 'X';
+        
         public Form1()
         {
             InitializeComponent();
@@ -34,12 +35,13 @@ namespace Tic_Tac_Toe
                     buttons[row, col].Top = row * 100;
                     buttons[row, col].Left = col * 100;
                     buttons[row, col].Tag = new Tuple<int, int>(row, col);
-                    buttons[row, col].Font = new System.Drawing.Font("Arial", 20F);
+                    buttons[row, col].Font = new System.Drawing.Font("Arial", 50F);
                     buttons[row, col].Click += new EventHandler(Button_Click);
 
                     Controls.Add(buttons[row, col]);
                 }
             }
+            this.ClientSize = new System.Drawing.Size(380, 300);
         }
         private void Button_Click(object sender, EventArgs e)
         {
@@ -66,7 +68,7 @@ namespace Tic_Tac_Toe
             else
             {
                 currentPlayer = (currentPlayer == 'X') ? '0' : 'X';
-
+                
             }
 
         }
@@ -75,6 +77,7 @@ namespace Tic_Tac_Toe
         {
             Tuple<int, int> position = (Tuple<int, int>)button.Tag;
             buttons[position.Item1, position.Item2].Text = currentPlayer.ToString();
+            button.BackColor = (currentPlayer == 'X') ? Color.LightSkyBlue : Color.LightSalmon;
         }
         private bool CheckForWinner()
         {
@@ -126,6 +129,7 @@ namespace Tic_Tac_Toe
             foreach (Button button in buttons)
             {
                 button.Text = "";
+                button.BackColor = DefaultBackColor;
             }
             currentPlayer = 'X';
         }
