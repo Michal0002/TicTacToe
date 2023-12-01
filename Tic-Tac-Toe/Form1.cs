@@ -15,11 +15,14 @@ namespace Tic_Tac_Toe
 
         private Button[,] buttons;
         private char currentPlayer = 'X';
-        
+        private Label playerXInfoLabel;
+        private Label playerOInfoLabel;
+
         public Form1()
         {
             InitializeComponent();
             InitializeBoard();
+            InitializePlayerInfo();
         }
         private void InitializeBoard()
         {
@@ -41,8 +44,28 @@ namespace Tic_Tac_Toe
                     Controls.Add(buttons[row, col]);
                 }
             }
-            this.ClientSize = new System.Drawing.Size(380, 300);
+            this.ClientSize = new System.Drawing.Size(400, 300);
         }
+
+        private void InitializePlayerInfo()
+        {
+            playerXInfoLabel = new Label();
+            playerXInfoLabel.Text = "Player 1: X";
+            playerXInfoLabel.Font = new System.Drawing.Font("Arial", 10F);
+            playerXInfoLabel.Top = 10;
+            playerXInfoLabel.Left = 310;
+            Controls.Add(playerXInfoLabel);
+
+            playerOInfoLabel = new Label();
+            playerOInfoLabel.Text = "Player 2: O";
+            playerOInfoLabel.Font = new System.Drawing.Font("Arial", 10F);
+            playerOInfoLabel.Top = 50;
+            playerOInfoLabel.Left = 310;
+            Controls.Add(playerOInfoLabel);
+        }
+
+
+
         private void Button_Click(object sender, EventArgs e)
         {
             Button clickedButton = (Button)sender;
@@ -67,7 +90,7 @@ namespace Tic_Tac_Toe
             }
             else
             {
-                currentPlayer = (currentPlayer == 'X') ? '0' : 'X';
+                currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
                 
             }
 
