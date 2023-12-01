@@ -43,6 +43,41 @@ namespace Tic_Tac_Toe
         }
         private void Button_Click(object sender, EventArgs e)
         {
+            Button clickedButton = (Button)sender;
+
+            if (clickedButton.Text != "")
+            {
+                MessageBox.Show("This field is already taken!", "Error");
+            }
+
+            UpdateButton(clickedButton);
+            if (CheckForWinner())
+            {
+                MessageBox.Show("Player " + currentPlayer + " wins!", "Game result");
+            }
+            else if (IsBoardFull())
+            {
+                MessageBox.Show("Draw!", "Game result");
+
+            }
+            else
+            {
+                currentPlayer = (currentPlayer == 'X') ? '0' : 'X';
+            }
+
+        }
+
+        private void UpdateButton(Button button)
+        {
+
+        }
+        private bool CheckForWinner()
+        {
+            return true;
+        }
+        private bool IsBoardFull()
+        {
+            return false;
 
         }
         private void Form1_Load(object sender, EventArgs e)
