@@ -74,7 +74,31 @@ namespace Tic_Tac_Toe
         }
         private bool CheckForWinner()
         {
-            return true;
+            for (int i = 0; i<3; i++)
+            {
+                //row victory
+                if (buttons[i, 0].Text == currentPlayer.ToString() && buttons[i,1].Text == currentPlayer.ToString() && buttons[i,2].Text == currentPlayer.ToString())
+                {
+                    return true;
+                }
+                //column victoryr
+                if (buttons[0,i].Text == currentPlayer.ToString() && buttons[1,i].Text == currentPlayer.ToString() && buttons[2,i].Text == currentPlayer.ToString())
+                {
+                    return true;
+                }
+            }
+            //diag1
+            if (buttons[0,0].Text == currentPlayer.ToString() && buttons[1,1].Text == currentPlayer.ToString() && buttons[2, 2].Text == currentPlayer.ToString())
+            {
+                return true;
+            }
+            //diag2
+            else if (buttons[0, 2].Text == currentPlayer.ToString() && buttons[1, 1].Text == currentPlayer.ToString() && buttons[2, 0].Text == currentPlayer.ToString())
+            {
+                return true;
+            }
+
+            return false;
         }
         private bool IsBoardFull()
         {
