@@ -48,21 +48,25 @@ namespace Tic_Tac_Toe
             if (clickedButton.Text != "")
             {
                 MessageBox.Show("This field is already taken!", "Error");
+                return;
             }
 
             UpdateButton(clickedButton);
             if (CheckForWinner())
             {
                 MessageBox.Show("Player " + currentPlayer + " wins!", "Game result");
+                ResetGame();
             }
             else if (IsBoardFull())
             {
                 MessageBox.Show("Draw!", "Game result");
+                ResetGame();
 
             }
             else
             {
                 currentPlayer = (currentPlayer == 'X') ? '0' : 'X';
+
             }
 
         }
@@ -102,12 +106,32 @@ namespace Tic_Tac_Toe
         }
         private bool IsBoardFull()
         {
-            return false;
+            for (int row = 0; row < 3; row++)
+            {
+                for (int col = 0; col < 3; col++)
+                {
+                    if (buttons[row, col].Text == "")
+                    {
+                        return false;
+                    }
+                }
 
+            }
+            return true;
+
+        }
+
+        private void ResetGame()
+        {
+            foreach (Button button in buttons)
+            {
+                button.Text = "";
+            }
+            currentPlayer = 'X';
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
+           
         }
     }
 }
