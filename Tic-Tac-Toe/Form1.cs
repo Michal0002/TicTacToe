@@ -69,7 +69,8 @@ namespace Tic_Tac_Toe
 
         private void UpdateButton(Button button)
         {
-
+            Tuple<int, int> position = (Tuple<int, int>)button.Tag;
+            buttons[position.Item1, position.Item2].Text = currentPlayer.ToString();
         }
         private bool CheckForWinner()
         {
